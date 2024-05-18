@@ -113,14 +113,7 @@ def main(command_line=None):
     )
     # Выполнить разбор аргументов командной строки.
     args = parser.parse_args(command_line)
-    try:
-        directory = pathlib.Path(args.directory).resolve(strict=True)
-    except FileNotFoundError:
-        print("Warning! This file path can not be found, please, check it again!", file=sys.stderr)
-        sys.exit(1)
-    except Exception as e:
-        print(f"Error: {e}", file=sys.stderr)
-        sys.exit(1)
+    directory = pathlib.Path(args.directory).resolve(strict=True)
     tree(directory, args)
 
 
